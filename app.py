@@ -1,9 +1,13 @@
 from flask import Flask, jsonify
+from flask_cors import CORS  # Import CORS
 import requests
 from datetime import datetime, timedelta
 import os
 
 app = Flask(__name__)
+
+# Enable CORS for all routes and all domains
+CORS(app)
 
 API_KEY = '3'
 LEAGUE_ID = '4554'
@@ -67,4 +71,3 @@ def betmgm_premier_league_nights():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
     app.run(host='0.0.0.0', port=port, debug=True)
-
